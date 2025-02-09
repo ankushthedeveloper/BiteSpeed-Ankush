@@ -1,21 +1,16 @@
 {
-    "version": 2,
+   "version": 2,
     "builds": [
       {
         "src": "dist/server.js",
-        "use": "@vercel/node",
-        "config": {
-          "maxLambdaSize": "50mb",
-          "memory": 1024,
-          "maxDuration": 50
-        }
+        "use": "@vercel/node"
       }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "dist/server.js"
-      }
-    ]
+        {
+          "src": "/(.*)",
+          "dest": "dist/server.js"
+        }
+      ]
   }
   

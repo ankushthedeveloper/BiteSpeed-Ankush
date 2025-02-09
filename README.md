@@ -5,6 +5,8 @@ The Bitespeed Identity Resolution System is designed to efficiently manage and r
 🔗 Live Demo:
 
 Frontend: https://bitespeedfronted.netlify.app/
+
+
 Backend API: https://bitespeedverifications.vercel.app/api/all-contacts
 Features
 🚀 Backend (Node.js + TypeScript + PostgreSQL)

@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { errorHandler } from '../modules/Middlewares/errorHandler';
-import contactRoutes from "../modules/Routes/routes";
+import { errorHandler } from './modules/Middlewares/errorHandler';
+import contactRoutes from './modules/Routes/routes'
 
 const app = express();
 

@@ -7,7 +7,7 @@ The Bitespeed Identity Resolution System is designed to efficiently manage and r
 Frontend: https://bitespeedfronted.netlify.app/
 
 
-Backend API: https://bitespeedverifications.vercel.app/api/all-contacts
+Backend API: https://bitespeedverifications.vercel.app/api/all-contacts { This shows you all the  Documents Present in the database , Initially i will be keeping the Database Empty }
 
 
 Features

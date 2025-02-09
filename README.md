@@ -1,44 +1,47 @@
-Bitespeed Identity Resolution System
-Overview
-The Bitespeed Identity Resolution System is designed to efficiently manage and resolve user identities based on their email and phone number. The backend is powered by Node.js, TypeScript, Express, and PostgreSQL, while the frontend is built using React.js.
+🛡️ Bitespeed Identity Resolution
+This project implements identity resolution using TypeScript, Node.js, Express, PostgreSQL, and a React frontend. The backend processes user inputs (email & phone number) and maintains a structured identity system.
 
-🔗 Live Demo:
-
+🚀 Live Links
 Frontend: https://bitespeedfronted.netlify.app/
-
-
-Backend API: https://bitespeedverifications.vercel.app/api/all-contacts { This shows you all the  Documents Present in the database , Initially i will be keeping the Database Empty }
-
-
-Features
-🚀 Backend (Node.js + TypeScript + PostgreSQL)
-✅ Identity Resolution Algorithm: Ensures users are linked correctly based on email and phone number.
-✅ Primary & Secondary Contact Management: Converts primary contacts to secondary if a duplicate entry is detected.
-✅ Efficient Database Querying: Uses PostgreSQL with optimized queries for fast lookups.
-✅ REST API Endpoints: Provides endpoints to create, fetch, and manage user identities.
-🎨 Frontend (React.js)
-✅ Simple & Intuitive UI: Allows users to input email and phone number.
-✅ API Integration: Sends user data to the backend and displays the resolved identity response.
-✅ Real-Time Response Display: Shows resolved contact details fetched from the backend.
-API Endpoints & Functionality
-🔹 1. Identify or Create Contact
-Endpoint:
-
-http
-Copy
-Edit
+Backend API: https://bitespeedverifications.vercel.app/api/all-contacts {
+This Api shows all the documents present in the database , Initially I will be keeping the database empty , So Start Creating Contacts and keep on Looking the Backend End Point to check the documents after any operation. 
+}
+📌 Features
+✅ Backend (Identity Resolution API)
+Stores contacts with email and phone numbers.
+Ensures no duplicate identities.
+Merges contacts if they share the same email or phone number.
+Maintains primary & secondary contacts:
+Primary Contact → The oldest entry remains primary.
+Secondary Contacts → Newer contacts linked to the primary.
+Prevents unnecessary duplicate entries.
+✅ Frontend (React UI)
+A simple form to input email and phone number.
+Sends data via POST request to the backend.
+Displays processed contact response from the backend.
+🔧 Tech Stack
+Backend
+Node.js + Express.js (API)
+TypeScript (Strict type safety)
+PostgreSQL + pg-promise (Database)
+Vercel (Deployment)
+Frontend
+React.js (User interface)
+Axios (API requests)
+Vercel (Deployment)
+📡 API Endpoints
+1️⃣ Identify or Create Contact
 POST /identify
-Request Body:
 
+Request Body
 json
 Copy
 Edit
 {
   "email": "george@hillvalley.edu",
-  "phoneNumber": "919191"
+  "phoneNumber": "717171"
 }
-Response:
-
+Response
 json
 Copy
 Edit
@@ -50,96 +53,64 @@ Edit
     "secondaryContactIds": [27]
   }
 }
-Functionality:
-
-If a new user is found, they are stored as a primary contact.
-If an existing user is found with the same email or phone, they are linked under one identity.
-If two primary users have a shared identifier, the latest created user is converted to secondary under the earliest primary contact.
-Project Structure
-pgsql
+🛠️ Setup Instructions
+Backend
+Clone the repo:
+bash
 Copy
 Edit
-bitespeed-identity-resolution/
-│── backend/
-│   ├── src/
-│   │   ├── api/
-│   │   │   ├── server.ts
-│   │   │   ├── controllers/
-│   │   │   ├── services/
-│   │   │   ├── models/
-│   │   │   ├── repositories/
-│   ├── dist/ (Compiled TypeScript Output)
-│   ├── package.json
-│   ├── tsconfig.json
-│── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── App.tsx
-│   │   ├── index.tsx
-│   ├── public/
-│   ├── package.json
-│   ├── .env
-│── README.md
-How to Run Locally
-1️⃣ Clone the Repository
-sh
-Copy
-Edit
-git clone https://github.com/ankushthedeveloper/bitespeed-identity-resolution.git
-cd bitespeed-identity-resolution
-2️⃣ Backend Setup
-sh
-Copy
-Edit
+git clone <your-repo-url>
 cd backend
+Install dependencies:
+bash
+Copy
+Edit
 npm install
-cp .env.example .env   # Configure your database
-npm run dev
-3️⃣ Frontend Setup
-sh
-Copy
-Edit
-cd frontend
-npm install
-npm start
-Deployment
-Backend (Vercel)
-Build command:
-sh
-Copy
-Edit
-npm run build
-Start command:
-sh
-Copy
-Edit
-npm run start
-Vercel Environment Variables:
+Set up .env file:
 ini
 Copy
 Edit
 PORT=5000
-DATABASE_URL=your_postgresql_url
-Frontend (Netlify)
-Build Command:
-sh
+DATABASE_URL=your_postgresql_connection_string
+Run server:
+bash
 Copy
 Edit
-npm run build
-Publish Directory:
-nginx
+npm run dev
+Frontend
+Navigate to frontend folder:
+bash
 Copy
 Edit
-build
-Contributing 🤝
-Feel free to fork this repo, raise PRs, or open issues.
-Follow the contribution guidelines (if applicable).
-License 📜
-This project is licensed under the MIT License.
+cd frontend
+Install dependencies:
+bash
+Copy
+Edit
+npm install
+Start frontend:
+bash
+Copy
+Edit
+npm start
+📜 Example Scenarios
+🏷️ Case 1: New User
+🔹 If an email & phone number do not exist → Create new primary contact.
 
-Author ✨
-👨‍💻 Ankush
+🏷️ Case 2: Same Email, Different Phone
+🔹 If a new phone number is added with an existing email, it links to the primary contact.
 
-GitHub: @ankush
-LinkedIn: @ankush
+🏷️ Case 3: Same Phone, Different Email
+🔹 If a new email is added with an existing phone number, it links to the primary contact.
+
+🏷️ Case 4: Merging Two Existing Contacts
+🔹 If two separate primary contacts (with the same email & phone) exist,
+the older one remains primary, and the other becomes secondary.
+
+🎯 Future Improvements
+Add authentication for API security.
+Implement a better UI with loading states.
+Introduce a dashboard to visualize contacts.
+👨‍💻 Contributors
+Ankush – Backend & Frontend Development
+Feel free to fork & contribute! 🚀

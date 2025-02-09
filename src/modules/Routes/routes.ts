@@ -8,5 +8,6 @@ const router = Router();
 
 router.post('/identify', validateContact, validationMiddleware, ContactsController.identify);
 router.get('/all-contacts',ContactsController.getAllContactsRaw);
+router.delete('/clear-contacts', ContactsController.clearAllContacts);
 
 export default router;

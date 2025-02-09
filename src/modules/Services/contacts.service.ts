@@ -74,4 +74,9 @@ export class ContactsService {
   static async getAllContactsRaw() {
     return await ContactsRepository.findAll();
 }
+
+static async clearAllContacts(): Promise<{ message: string }> {
+  await ContactsRepository.clearAllContacts();
+  return { message: 'All contacts have been cleared successfully.' };
+}
 }

@@ -18,4 +18,13 @@ export class ContactsController {
           res.status(500).json({ message: "Internal Server Error" });
       }
   }
+
+  static async clearAllContacts(req: Request, res: Response) {
+    try {
+      const response = await ContactsService.clearAllContacts();
+       res.status(200).json(response);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to clear contacts' });
+    }
+  }
 }

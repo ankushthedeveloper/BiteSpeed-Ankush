@@ -62,4 +62,8 @@ export class ContactsRepository {
     return db.any(`SELECT * FROM contacts ORDER BY createdat ASC`);
 }
 
+static async clearAllContacts(): Promise<void> {
+  await db.none('DELETE FROM contacts');
+}
+
 }

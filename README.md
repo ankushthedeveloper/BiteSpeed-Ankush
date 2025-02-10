@@ -14,7 +14,7 @@ The backend processes user inputs (**email & phone number**) and maintains a str
 - **Backend API:** [Bitespeed Backend](https://bitespeedverifications.vercel.app/api/all-contacts)  
 
 > **Note:** The `/all-contacts` API displays all documents in the database.  
-> Initially, the database will be **empty**, so start **creating contacts** and observe changes in the documents at the Backend /api/all-contacts.
+> Initially, the database will be **empty** or just one/two contacts , You can delete all the contacts from fronted with the **Delete All Contacts** Button, so start **creating contacts** and observe changes in the documents at the Backend /api/all-contacts.   
 
 ---
 

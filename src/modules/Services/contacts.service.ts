@@ -1,3 +1,4 @@
+import { error } from "console";
 import { ContactsRepository } from "../Repositories/contacts.repository";
 import { Contact } from "../models/contacts.model";
 export class ContactsService {
@@ -6,7 +7,8 @@ static async identifyOrCreateContact(email?: string, phonenumber?: string) {
     const existingContacts: Contact[] =
       await ContactsRepository.findByEmailOrPhone(email, phonenumber);
 
-    if (existingContacts.length === 0) {
+    if (existingContacts.length === 0 ) {
+     if(email && phonenumber) {
       const newPrimary = await ContactsRepository.createPrimary(
         email ?? "",
         phonenumber ?? ""
@@ -16,9 +18,11 @@ static async identifyOrCreateContact(email?: string, phonenumber?: string) {
         emails: newPrimary.email ? [newPrimary.email] : [],
         phoneNumbers: newPrimary.phonenumber ? [newPrimary.phonenumber] : [],
         secondaryContactIds: [],
-      };
+        };
     }
-
+    else throw error("email or phone number is null");
+    
+  }
     const primaryContacts: Contact[] = existingContacts.filter(
       (c) => c.linkprecedence === "primary"
     );

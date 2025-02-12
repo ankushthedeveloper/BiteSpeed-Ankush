@@ -8,7 +8,7 @@ static async identifyOrCreateContact(email?: string, phonenumber?: string) {
       await ContactsRepository.findByEmailOrPhone(email, phonenumber);
 
     if (existingContacts.length === 0 ) {
-     if(email && phonenumber) {
+       if(email && phonenumber) {
       const newPrimary = await ContactsRepository.createPrimary(
         email ?? "",
         phonenumber ?? ""
